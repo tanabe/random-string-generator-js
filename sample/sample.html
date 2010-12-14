@@ -1,0 +1,47 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ja">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta http-equiv="content-language" content="ja">
+    <title>random-string-generator.js sample</title>
+    <meta http-equiv="content-script-type" content="text/javascript">
+    <meta http-equiv="content-style-type" content="text/css">
+    <script type="text/javascript" src="random-string-generator.js"></script>
+    <style type="text/css">
+      body {
+        margin: 1em;
+      }
+      #output {
+        font-weight: bold;
+        font-size: 1.5em;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>random-string-generator.js sample</h1>
+    <p>
+      <label for="stringLength">string length </label><input type="text" id="stringLength" value="32"><br>
+      <label for="additionalCharacters">additionalCharacters(space separated) </label><input type="text" id="additionalCharacters" value="$ ? @ ,"><br>
+      <input type="checkbox" id="useNumbers" checked><label for="useNumbers">use numbers [0-9]</label><br>
+      <input type="checkbox" id="useUpperCases" checked><label for="useUpperCases">use uppercases [A-Z]</label><br>
+    </p>
+    <p>
+      <button id="generateButton">generate</button>
+    </p>
+    <p id="output"></p>
+    <script type="text/javascript">
+      var $ = function(element) {
+        return document.getElementById(element); 
+      };
+
+      $("generateButton").onclick = function() {
+        var length = Number($("stringLength").value);
+        var useNumbers = $("useNumbers").checked;
+        var useUpperCaseCharacters = $("useUpperCases").checked;
+        var additinals = $("additionalCharacters").value.split(/ /);
+        $("output").innerHTML = generateRandomString(length, useNumbers, useUpperCaseCharacters, additinals);
+      };
+    </script>
+  </body>
+</html>
